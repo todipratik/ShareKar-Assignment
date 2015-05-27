@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
+ * Signs-up a new user and stores the login-data in SharedPreferences
  * 
  * @author pratik
  * 

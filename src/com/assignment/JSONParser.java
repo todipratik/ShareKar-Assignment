@@ -16,6 +16,12 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+/**
+ * Makes a call to specified URL and gets the JSONObject from it
+ * 
+ * @author pratik
+ * 
+ */
 public class JSONParser {
 	static InputStream inputStream = null;
 	static JSONObject jsonObject = null;

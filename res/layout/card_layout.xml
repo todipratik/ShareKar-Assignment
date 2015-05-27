@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="@drawable/shadow_app_light_gray_left_right_bottom" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="This is title"
+        android:textSize="23sp" />
+
+    <TextView
+        android:id="@+id/link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_margin="5dp"
+        android:autoLink="web"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="This is link"
+        android:textSize="12sp" />
 
     <TextView
         android:id="@+id/snippet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is a card" />
+        android:layout_below="@id/link"
+        android:layout_margin="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="This is snippet"
+        android:textSize="15sp" />
 
 </RelativeLayout>
