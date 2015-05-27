@@ -1,6 +1,5 @@
 package com.assignment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
@@ -93,11 +92,35 @@ public class Util {
 	}
 
 	/**
+	 * Retrieve name of the user
 	 * 
 	 * @param context
-	 * @return
+	 *            Activity context from which function is called
+	 * @return name of the user
 	 */
 	public static String getName(Context context) {
 		return getSharedPrefs(context).getString(KEY_NAME, null);
+	}
+	
+	/**
+	 * Retrieve email-id of the user
+	 * 
+	 * @param context
+	 *            Activity context from which function is called
+	 * @return email-id of the user
+	 */
+	public static String getEmail(Context context) {
+		return getSharedPrefs(context).getString(KEY_EMAIL, null);
+	}
+
+	/**
+	 * Retrieve mobile number of the user
+	 * 
+	 * @param context
+	 *            Activity context from which function is called
+	 * @return mobile number of the user
+	 */
+	public static String getMobile(Context context) {
+		return getSharedPrefs(context).getString(KEY_MOBILE, null);
 	}
 }

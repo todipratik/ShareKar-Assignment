@@ -29,6 +29,8 @@ import android.widget.Toast;
 public class Home extends ActionBarActivity {
 
 	private TextView mWelcomeText;
+	private TextView mEmail;
+	private TextView mMobile;
 	private EditText mSearchQuery;
 	private Button mSearch;
 	private LinearLayout mLinearLayout;
@@ -63,6 +65,8 @@ public class Home extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 		mWelcomeText = (TextView) findViewById(R.id.welcome_text);
+		mEmail = (TextView) findViewById(R.id.email);
+		mMobile = (TextView) findViewById(R.id.mobile);
 		mSearchQuery = (EditText) findViewById(R.id.search_query);
 		mSearch = (Button) findViewById(R.id.search);
 		mLinearLayout = (LinearLayout) findViewById(R.id.cards);
@@ -70,6 +74,8 @@ public class Home extends ActionBarActivity {
 		mSearchProgress = (ProgressBar) findViewById(R.id.search_progress);
 		mWelcomeText.setText("Welcome, "
 				+ Util.getName(getApplicationContext()) + "!");
+		mEmail.setText(Util.getEmail(getApplicationContext()));
+		mMobile.setText(Util.getMobile(getApplicationContext()));
 		mSearch.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -142,11 +148,9 @@ public class Home extends ActionBarActivity {
 						String count = jsonObject.getJSONObject(
 								TAG_SEARCH_INFORMATION).getString(
 								TAG_TOTAL_RESULTS);
-						// Util.toastText("Total count is " + count,
-						// getApplicationContext(), Toast.LENGTH_LONG);
 						Integer results_count = Integer.parseInt(count);
 						if (results_count == 0) {
-							// no search results
+							// zero search results
 							mMessage.setText("Oops...No results found :(");
 							mMessage.setVisibility(View.VISIBLE);
 						} else if (results_count <= 3) {
@@ -195,8 +199,6 @@ public class Home extends ActionBarActivity {
 					try {
 						String message = jsonObject.getJSONObject(TAG_ERROR)
 								.getString(TAG_ERROR_MESSAGE);
-						// Util.toastText(message, getApplicationContext(),
-						// Toast.LENGTH_LONG);
 						mMessage.setText(message);
 						mMessage.setVisibility(View.VISIBLE);
 					} catch (JSONException e) {
