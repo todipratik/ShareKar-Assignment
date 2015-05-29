@@ -35,6 +35,8 @@ public class SignUpActivity extends ActionBarActivity {
 		mEmail = (EditText) findViewById(R.id.email);
 		mMobile = (EditText) findViewById(R.id.mobile);
 		mPassword = (EditText) findViewById(R.id.password);
+		mMobile.setText(Util.getMobile(getApplicationContext()));
+		mMobile.setEnabled(false);
 	}
 
 	@Override
@@ -59,14 +61,12 @@ public class SignUpActivity extends ActionBarActivity {
 	private boolean tryLogin() {
 		String name = mName.getText().toString().trim();
 		String email = mEmail.getText().toString().trim();
-		String mobile = mMobile.getText().toString().trim();
 		String password = mPassword.getText().toString().trim();
 
 		if (name.matches(Util.REGEX_NAME) && email.matches(Util.REGEX_EMAIL)
-				&& mobile.matches(Util.REGEX_PHONE)
 				&& password.matches(Util.REGEX_PASSWORD)) {
 			// save the details in SharedPreferences
-			Util.save(getApplicationContext(), name, email, mobile, password);
+			Util.save(getApplicationContext(), name, email, password);
 			// move to home activity
 			Intent intent = new Intent(SignUpActivity.this, Home.class);
 			startActivity(intent);
@@ -78,9 +78,6 @@ public class SignUpActivity extends ActionBarActivity {
 						getApplicationContext(), Toast.LENGTH_LONG);
 			} else if (!email.matches(Util.REGEX_EMAIL)) {
 				Util.toastText("Please enter a valid email address",
-						getApplicationContext(), Toast.LENGTH_LONG);
-			} else if (!mobile.matches(Util.REGEX_PHONE)) {
-				Util.toastText("Please enter your 10-digit mobile number",
 						getApplicationContext(), Toast.LENGTH_LONG);
 			} else if (!password.matches(Util.REGEX_PASSWORD)) {
 				Util.toastText(

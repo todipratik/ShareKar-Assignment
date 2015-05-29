@@ -24,6 +24,11 @@ public class Util {
 	public static final String REGEX_PHONE = "^[0-9]{10}$";
 
 	/**
+	 * Regex for 4-digit OTP
+	 */
+	public static final String REGEX_OTP = "^[0-9]{4}$";
+
+	/**
 	 * Regex for standard email-id
 	 */
 	public static final String REGEX_EMAIL = "\\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b";
@@ -76,18 +81,29 @@ public class Util {
 	 *            Name of the user
 	 * @param email
 	 *            Email of the user
-	 * @param mobile
-	 *            Phone of the user
 	 * @param password
 	 *            Password of the user
 	 */
 	public static void save(Context context, String name, String email,
-			String mobile, String password) {
+			String password) {
 		SharedPreferences.Editor editor = getSharedPrefs(context).edit();
 		editor.putString(KEY_NAME, name);
 		editor.putString(KEY_EMAIL, email);
-		editor.putString(KEY_MOBILE, mobile);
 		editor.putString(KEY_PASSWORD, password);
+		editor.commit();
+	}
+
+	/**
+	 * Saves the mobile number to SharedPreferences
+	 * 
+	 * @param context
+	 *            Activity context from which function is called
+	 * @param mobile
+	 *            Phone of the user
+	 */
+	public static void saveMobile(Context context, String mobile) {
+		SharedPreferences.Editor editor = getSharedPrefs(context).edit();
+		editor.putString(KEY_MOBILE, mobile);
 		editor.commit();
 	}
 
@@ -101,7 +117,7 @@ public class Util {
 	public static String getName(Context context) {
 		return getSharedPrefs(context).getString(KEY_NAME, null);
 	}
-	
+
 	/**
 	 * Retrieve email-id of the user
 	 * 
